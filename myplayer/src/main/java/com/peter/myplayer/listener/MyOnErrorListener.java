@@ -1,0 +1,11 @@
+package com.peter.myplayer.listener;
+
+/**
+ * Created by yangw on 2018-3-25.
+ */
+
+public interface MyOnErrorListener {
+
+    void onError(int code, String msg);
+
+}
