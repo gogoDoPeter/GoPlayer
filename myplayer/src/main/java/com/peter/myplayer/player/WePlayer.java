@@ -10,6 +10,7 @@ import com.peter.myplayer.listener.MyOnParparedListener;
 import com.peter.myplayer.listener.MyOnPauseResumeListener;
 import com.peter.myplayer.listener.MyOnTimeInfoListener;
 import com.peter.myplayer.log.MyLog;
+import com.peter.myplayer.opengl.MyGLSurfaceView;
 
 /**
  * Created by yangw on 2018-2-28.
@@ -38,7 +39,7 @@ public class WePlayer {
     private MyOnTimeInfoListener onTimeInfoListener;
     private MyOnErrorListener onErrorListener;
     private MyOnCompleteListener onCompleteListener;
-
+    private MyGLSurfaceView myGLSurfaceView;
 
     public WePlayer()
     {}
@@ -79,6 +80,10 @@ public class WePlayer {
 
     public void setOnCompleteListener(MyOnCompleteListener onCompleteListener) {
         this.onCompleteListener = onCompleteListener;
+    }
+
+    public void setMyGLSurfaceView(MyGLSurfaceView myGLSurfaceView) {
+        this.myGLSurfaceView = myGLSurfaceView;
     }
 
     public void parpared()
@@ -217,6 +222,10 @@ public class WePlayer {
     public void onCallRenderYUV(int width, int height, byte[] y, byte[] u, byte[] v)
     {
         MyLog.d("获取到视频的yuv数据");
+        if(myGLSurfaceView != null)
+        {
+            myGLSurfaceView.setYUVData(width, height, y, u, v);
+        }
     }
 
     private native void nativePrepared(String source);

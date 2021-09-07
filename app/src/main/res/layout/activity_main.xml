@@ -7,40 +7,59 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
+    <com.peter.myplayer.opengl.MyGLSurfaceView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="开始"
-        android:onClick="begin"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="停止"
-        android:onClick="stop"/>
+        android:layout_height="300dp"
+        android:id="@+id/myglsurfaceview"/>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="暂停"
-        android:onClick="pause"/>
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/bt_start"
+            android:text="开始"
+            android:onClick="begin"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="停止"
+            android:onClick="stop"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="播放"
-        android:onClick="resume"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="暂停"
+            android:onClick="pause"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seek"
-        android:onClick="seek"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="播放"
+            android:onClick="resume"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="切换"
-        android:onClick="next"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Seek"
+            android:textAllCaps="false"
+            android:onClick="seek"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="切换"
+            android:onClick="next"/>
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_time"

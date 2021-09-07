@@ -26,6 +26,7 @@ import com.peter.myplayer.listener.MyOnParparedListener;
 import com.peter.myplayer.listener.MyOnPauseResumeListener;
 import com.peter.myplayer.listener.MyOnTimeInfoListener;
 import com.peter.myplayer.log.MyLog;
+import com.peter.myplayer.opengl.MyGLSurfaceView;
 import com.peter.myplayer.player.WePlayer;
 import com.peter.myplayer.util.MyTimeUtil;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+    private MyGLSurfaceView myGLSurfaceView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +50,10 @@ public class MainActivity extends AppCompatActivity {
         checkPermission();
 
         tvTime = (TextView)findViewById(R.id.tv_time);
+        myGLSurfaceView= ((MyGLSurfaceView) findViewById(R.id.myglsurfaceview));
 
         wePlayer = new WePlayer();
+        wePlayer.setMyGLSurfaceView(myGLSurfaceView);
         wePlayer.setOnParparedListener(new MyOnParparedListener() {
             @Override
             public void onParpared() {

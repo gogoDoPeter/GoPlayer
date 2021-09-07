@@ -69,7 +69,7 @@ void * playVideo(void *data)
             continue;
         }
         LOGE("子线程解码一个AVframe成功");
-        if(avFrame->format == AV_PIX_FMT_YUV420P)
+        if(avFrame->format == AV_PIX_FMT_YUV420P)   //I420 format
         {
             LOGE("当前视频是YUV420P格式");
             video->wlCallJava->onCallRenderYUV(
@@ -78,7 +78,7 @@ void * playVideo(void *data)
                     avFrame->data[0],
                     avFrame->data[1],
                     avFrame->data[2]);
-        } else{
+        } else{//convert to I420 format by using sws_scale
             LOGE("当前视频不是YUV420P格式");
             AVFrame *pFrameYUV420P = av_frame_alloc();
             int num = av_image_get_buffer_size(
